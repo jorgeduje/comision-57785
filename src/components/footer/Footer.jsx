@@ -13,8 +13,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// Footer() --> Javascript
-{
-  /* <Footer /> */
-} // --> React

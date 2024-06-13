@@ -1,10 +1,7 @@
-const ItemList = ({ greeting, numero, sumar, cambiarNombre }) => {
+const ItemList = () => {
   return (
     <div>
-      <h1> {greeting} </h1>
-      <h1>{numero}</h1>
-      <button onClick={sumar}>sumar</button>
-      <button onClick={cambiarNombre}>Cambiar nombre</button>
+      <h1>Aca van los productos</h1>
     </div>
   );
 };
