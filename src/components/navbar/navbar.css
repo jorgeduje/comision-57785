@@ -1,3 +1,8 @@
 .navbarContainer {
   background-color: peru;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  min-height: 10vh;
+  align-items: center;
 }

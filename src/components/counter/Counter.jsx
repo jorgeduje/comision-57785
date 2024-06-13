@@ -1,22 +1,6 @@
-import { useState } from "react";
 import { ProductCard } from "../productCard/ProductCard";
 
-export const Counter = () => {
-  // estado es como una variable pero que recuerda su valor anterior
-  const [contador, setContador] = useState(1); // [ undefined, function ]
-
-  const restar = () => {
-    if (contador > 1) {
-      setContador(contador - 1);
-    } else {
-      alert("Minimo");
-    }
-  };
-
-  const sumar = () => {
-    setContador(contador + 1);
-  };
-
+export const Counter = ({ restar, contador, sumar }) => {
   return (
     <div>
       <button onClick={restar}>Restar</button>
