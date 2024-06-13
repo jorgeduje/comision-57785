@@ -6,9 +6,7 @@ export const Navbar = () => {
     <div>
       <>
         <div className="containerNavbar">
-          <li to="/" style={{ color: "beige" }}>
-            Comision 54030
-          </li>
+          <li style={{ color: "beige" }}>Comision 57785</li>
           <ul className="categories">
             <li>Todas</li>
             <li>Urbanas</li>
