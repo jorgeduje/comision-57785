@@ -1,9 +1,11 @@
-import ItemDetailContainer from "./pages/itemDetailContainer/ItemDetailContainer";
+import { Navbar } from "./components/navbar/Navbar";
+import ItemListContainer from "./pages/itemListContainer/ItemListContainer";
 
 function App() {
   return (
     <>
-      <ItemDetailContainer />
+      <Navbar />
+      <ItemListContainer />
     </>
   );
 }
