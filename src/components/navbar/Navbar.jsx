@@ -1,7 +1,8 @@
 import CartWidget from "../cartWidget/CartWidget";
 import "./navbar.css";
 
-export const Navbar = () => {
+export const Navbar = ({ children }) => {
+  console.log(children);
   return (
     <div>
       <>
@@ -15,6 +16,7 @@ export const Navbar = () => {
           <CartWidget />
         </div>
       </>
+      {children}
     </div>
   );
 };
