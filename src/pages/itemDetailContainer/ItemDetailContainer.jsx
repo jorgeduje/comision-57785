@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { products } from "../../products";
+import { useParams } from "react-router-dom";
 
 const ItemDetailContainer = () => {
-  let id = 2;
+  const { id } = useParams();
+
   const [item, setItem] = useState({});
 
   useEffect(() => {
-    let product = products.find((product) => product.id === id);
+    let product = products.find((product) => product.id === +id);
     if (product) {
       setItem(product);
     }
@@ -17,3 +19,7 @@ const ItemDetailContainer = () => {
 };
 
 export default ItemDetailContainer;
+// "3" -- 3
+// +"3" --3
+// Number("3")-- 3
+// parseInt("e") -- 3
