@@ -1,20 +1,11 @@
-import Posts from "./pages/Posts";
-import Todos from "./pages/Todos";
-import Users from "./pages/Users";
+import { Navbar } from "./components/navbar/Navbar";
+import ItemListContainer from "./pages/itemListContainer/ItemListContainer";
 
 function App() {
   return (
     <>
-      {/* <Navbar>
-        <Users />
-      </Navbar> */}
-
-      {/* <h1>USUARIOS</h1>
-      <Users /> */}
-      <h1>TODOS</h1>
-      <Todos />
-      {/* <h1>POSTS</h1>
-      <Posts /> */}
+      <Navbar />
+      <ItemListContainer />
     </>
   );
 }
