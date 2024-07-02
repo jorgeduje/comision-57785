@@ -19,7 +19,3 @@ const ItemDetailContainer = () => {
 };
 
 export default ItemDetailContainer;
-// "3" -- 3
-// +"3" --3
-// Number("3")-- 3
-// parseInt("e") -- 3
