@@ -1,9 +1,22 @@
+import { Button } from "@mui/material";
+
 export const Counter = ({ restar, contador, sumar }) => {
   return (
-    <div>
-      <button onClick={restar}>Restar</button>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "1rem",
+      }}
+    >
+      <Button variant="contained" onClick={restar}>
+        Restar
+      </Button>
       <h2> {contador} </h2>
-      <button onClick={sumar}>Sumar</button>
+      <Button variant="contained" onClick={sumar}>
+        Sumar
+      </Button>
     </div>
   );
 };
