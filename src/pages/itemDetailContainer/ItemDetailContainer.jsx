@@ -15,7 +15,16 @@ const ItemDetailContainer = () => {
     }
   }, [id]);
 
-  return <ItemDetail item={item} />;
+  console.log(item);
+
+  const onAdd = (quantity) => {
+    // informacion del producto
+    // cuantas unidades
+    let objetoFinal = { ...item, quantity: quantity };
+    console.log(objetoFinal);
+  };
+
+  return <ItemDetail item={item} onAdd={onAdd} />;
 };
 
 export default ItemDetailContainer;

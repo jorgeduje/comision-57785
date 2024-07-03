@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
 
-const CounterContainer = () => {
+const CounterContainer = ({ onAdd }) => {
   const [contador, setContador] = useState(1);
 
   const sumar = () => {
@@ -15,8 +15,11 @@ const CounterContainer = () => {
       alert("Minimo");
     }
   };
+  // las unidades
 
-  return <Counter contador={contador} sumar={sumar} restar={restar} />;
+  return (
+    <Counter contador={contador} sumar={sumar} restar={restar} onAdd={onAdd} />
+  );
 };
 
 export default CounterContainer;
