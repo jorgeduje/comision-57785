@@ -1,6 +1,6 @@
 import CounterContainer from "../../components/counter/CounterContainer";
 import "./itemDetail.css";
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ item, onAdd }) => {
   return (
     <>
       <div>
@@ -22,7 +22,7 @@ const ItemDetail = ({ item }) => {
             </h2>
           </div>
         </div>
-        <CounterContainer />
+        <CounterContainer onAdd={onAdd} />
       </div>
     </>
   );
