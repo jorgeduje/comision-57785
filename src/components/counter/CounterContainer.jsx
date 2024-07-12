@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
 
-const CounterContainer = ({ onAdd }) => {
-  const [contador, setContador] = useState(1);
+const CounterContainer = ({ onAdd, stock, initial = 1 }) => {
+  const [contador, setContador] = useState(initial);
 
   const sumar = () => {
-    setContador(contador + 1);
+    if (contador < stock) {
+      setContador(contador + 1);
+    } else {
+      alert("stock maximo");
+    }
   };
 
   const restar = () => {
