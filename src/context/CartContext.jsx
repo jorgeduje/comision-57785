@@ -4,6 +4,10 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]); // [ {id:1}, {id:5}, {id:3} ] -
+  // quantity 10 - price 5 ---> 50
+  // quantity 3 - price 10 ---> 30
+
+  // sumar todos los subtotales // 80
 
   // funcion modificar
   const addToCart = (product) => {
@@ -14,7 +18,7 @@ const CartContextProvider = ({ children }) => {
         if (elemento.id === product.id) {
           return {
             ...elemento,
-            quantity: elemento.quantity + product.quantity,
+            quantity: product.quantity,
           };
         } else {
           return elemento;
@@ -48,12 +52,58 @@ const CartContextProvider = ({ children }) => {
     setCart(newArr);
   };
 
-  // total del precio
-  // cantidad de elementos
+  const getQuantityById = (id) => {
+    // 3
+    // no tenes unididades --> 1
+    // tenes x unidades ---> x unidades
+    let productoEncontrado = cart.find((product) => product.id === id);
+    // siempre el metodo find, devuelve el elemento o undefined si no hay coincidencias
+    //  {} ||  undefined
 
-  let data = { cart, addToCart, clearCart, deleteProduct };
+    // return productoEncontrado.quantity; // se rompe si es undefined
+    return productoEncontrado?.quantity;
+  };
+  // total del precio
+
+  // const getTotalPrice = () => {
+  //   let total = 0; // 10 // 20
+  //   for (let i = 0; i < cart.length; i++) {
+  //     total += cart[i].price * cart[i].quantity;
+  //   }
+  //   return total;
+  // };
+
+  const getTotalPrice = () => {
+    let total = cart.reduce((acc, elemento) => {
+      return acc + elemento.price * elemento.quantity;
+    }, 0);
+    return total;
+  };
+  // cantidad de elementos
+  const getTotalItems = () => {
+    let total = cart.reduce((acc, elemento) => {
+      return acc + elemento.quantity;
+    }, 0);
+    return total;
+  };
+
+  let data = {
+    cart,
+    addToCart,
+    clearCart,
+    deleteProduct,
+    getQuantityById,
+    getTotalPrice,
+    getTotalItems,
+  };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
 
 export default CartContextProvider;
+
+// map(() => {});
+// map(() => {});
+// map(() => {});
+// map(() => {});
+// reduce(() => {}, valorInicial);
