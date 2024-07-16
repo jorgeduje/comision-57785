@@ -4,49 +4,30 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PacmanLoader } from "react-spinners";
 import { Box, Skeleton } from "@mui/material";
+import { db } from "../../firebaseConfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
-  const [items, setItems] = useState([]);
-  const [error, setError] = useState({});
   const { name } = useParams();
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const getProducts = new Promise((resolve, reject) => {
-      let x = true;
-      let arrayFiltered = products.filter(
-        (product) => product.category === name
-      );
-      if (x) {
-        setTimeout(() => {
-          resolve(name ? arrayFiltered : products); // [todos] [con una parte] [ deportivas ]
-        }, 1000);
-      } else {
-        reject({ message: "error", codigo: "404" });
-      }
-    });
+    let productsCollection = collection(db, "products");
 
-    getProducts
-      .then((res) => {
-        setItems(res);
-      })
-      .catch((error) => {
-        setError(error);
-      });
+    let consulta = productsCollection;
+    if (name) {
+      consulta = query(productsCollection, where("category", "==", name));
+    }
+
+    let getProducts = getDocs(consulta);
+    getProducts.then((res) => {
+      let arrayValido = res.docs.map((product) => {
+        return { ...product.data(), id: product.id };
+      }); // []
+      setItems(arrayValido);
+    });
   }, [name]);
 
-  // if (items.length === 0) {
-  //   return (
-  //     <div
-  //       style={{
-  //         width: "100%",
-  //         display: "flex",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       <PacmanLoader color="red" size={40} />
-  //     </div>
-  //   );
-  // }
   if (items.length === 0) {
     return (
       <div
