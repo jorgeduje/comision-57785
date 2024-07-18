@@ -23,6 +23,8 @@ const ItemList = ({ items }) => {
           />
         );
       })}
+
+      <input type="file" />
     </div>
   );
 };

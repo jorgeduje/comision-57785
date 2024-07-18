@@ -1,8 +1,7 @@
 import ItemList from "./ItemList";
-import { products } from "../../products";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { PacmanLoader } from "react-spinners";
+
 import { Box, Skeleton } from "@mui/material";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -67,10 +66,19 @@ const ItemListContainer = () => {
     );
   }
 
+  // const addProducts = () => {
+  //   let productsCollection = collection(db, "products");
+
+  //   products.forEach((elemento) => {
+  //     addDoc(productsCollection, elemento);
+  //   });
+  // };
+
   return (
     <div>
-      <h1>Aca van a ir los items</h1>
-      <h1>Aca van a ir otra cosa</h1>
+      {/* <Button variant="contained" onClick={addProducts}>
+        Agregar productos
+      </Button> */}
       <ItemList items={items} />
       {/* {items.length === 0 ? <h1>Cargando.....</h1> : <ItemList items={items} />} */}
     </div>
