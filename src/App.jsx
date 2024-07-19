@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ItemListContainer from "./pages/itemListContainer/ItemListContainer";
-import Cart from "./pages/cart/Cart";
-import ItemDetailContainer from "./pages/itemDetailContainer/ItemDetailContainer";
+
 import Layout from "./components/layout/Layout";
-import Checkout from "./pages/checkout/Checkout";
 import CartContextProvider from "./context/CartContext";
-import CheckoutFormik from "./pages/checkoutFormik/CheckoutFormik";
 import { Toaster } from "sonner";
+import Dashboard from "./pages/dashboard/Dashboard";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import { routes } from "./routes/routes";
 
 function App() {
   return (
@@ -15,11 +14,13 @@ function App() {
       <CartContextProvider>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/category/:name" element={<ItemListContainer />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-            <Route path="/checkout" element={<Checkout />} />
+            {routes.map(({ id, path, Element }) => {
+              return <Route key={id} path={path} element={<Element />} />;
+            })}
+          </Route>
+
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
 
           <Route path="*" element={<h1> 404 Not found</h1>} />
