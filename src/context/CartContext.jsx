@@ -3,13 +3,10 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const [cart, setCart] = useState([]); // [ {id:1}, {id:5}, {id:3} ] -
-  // quantity 10 - price 5 ---> 50
-  // quantity 3 - price 10 ---> 30
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
-  // sumar todos los subtotales // 80
-
-  // funcion modificar
   const addToCart = (product) => {
     let existe = isInCart(product.id);
     if (existe) {
@@ -25,13 +22,17 @@ const CartContextProvider = ({ children }) => {
         }
       }); // siempre devuelve un array y siempre de la misma longitud
       setCart(newArray);
+      localStorage.setItem("cart", JSON.stringify(newArray));
+      // newArray
     } else {
       setCart([...cart, product]);
+      localStorage.setItem("cart", JSON.stringify([...cart, product]));
     }
   };
 
   const clearCart = () => {
     setCart([]);
+    localStorage.removeItem("cart");
   };
 
   const isInCart = (id) => {
@@ -45,6 +46,7 @@ const CartContextProvider = ({ children }) => {
   const deleteProduct = (id) => {
     let newArr = cart.filter((elemento) => elemento.id !== id);
     setCart(newArr);
+    localStorage.setItem("cart", JSON.stringify(newArr));
   };
 
   const getQuantityById = (id) => {
