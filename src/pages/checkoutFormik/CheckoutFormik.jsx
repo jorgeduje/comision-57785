@@ -9,10 +9,7 @@ const CheckoutFormik = () => {
 
   const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues: { nombre: "", email: "", contraseña: "", confirmar: "" },
-    onSubmit: (data) => {
-      console.log("se envia");
-      console.log(data);
-    },
+    onSubmit: () => {},
     validationSchema: Yup.object({
       nombre: Yup.string()
         .required("este campo es obligatorio")
@@ -33,10 +30,6 @@ const CheckoutFormik = () => {
     }),
     validateOnChange: false,
   });
-
-  //   console.log(values);
-  console.log(errors); // {email: "dsadsa", nombre:"dsa"} - {}
-  console.log(errors.nombre); // ---> undefined | texto
 
   return (
     <form

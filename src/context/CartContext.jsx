@@ -43,11 +43,6 @@ const CartContextProvider = ({ children }) => {
   // eliminar cada producto
 
   const deleteProduct = (id) => {
-    // 2
-    // encontrar ese producto y quitarlo
-    console.log(id);
-    // filter ---> siempre devuelve un nuevo array
-    // retornar un booleano [1, 3, 4, 5] -->
     let newArr = cart.filter((elemento) => elemento.id !== id);
     setCart(newArr);
   };
