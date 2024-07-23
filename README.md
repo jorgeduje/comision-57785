@@ -15,3 +15,10 @@
 ```
 git clone pepio
 ```
+
+```javascript
+let name = "pepe";
+const saludar = () => {
+  return "hola" + name;
+};
+```
